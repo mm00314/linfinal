@@ -1,0 +1,78 @@
+<%- include('includes/header'); -%>
+<%- include('includes/nav'); -%>
+
+
+<div class="jumbotron default-font">  <!--사이즈에 유동적으로 조절이 가능-->
+  <h1 class="display-4">총대는 내가 멜게,</h1>
+  <h1 class="display-4"> 스터디는 누가 할래?</h1>
+  <hr class="my-4">
+
+  <form>
+      <div class="form-group">
+        
+        <input type="text" class="form-control"  style="width:500px;height:40px;font-size:20px; float: left;" id="exampleFormControlInput1" placeholder="원하는 스터디를 입력하세요.">
+        <button type="button" class="btn btn-info" style="float: left; margin-left: 10px;">찾아보기</button>
+      </div>
+
+      
+      </form>
+  
+    
+  
+</div>
+
+<div class="container" style="text-align:center; margin: auto;">
+
+  <h1>스터디를 시작해보세요</h1>
+  <ul class="nav nav-pills" style="margin: 0;">
+    <li class="nav-item">
+      <a class="nav-link <% if (!selectedCategory) { %>nav_active<% } %>" href="/news">전체</a>
+    </li>
+    <% for(var i=0; i < category.length; i++) { %>
+      <a class="nav-link <% if (selectedCategory==category[i].id) { %>nav_active<% } %>" href="?category=<%= category[i].id %>"><%= category[i].title %></a>
+    <% } %>
+  </ul>
+
+  <% if (news.length>0) { %>
+    
+  <div class="row">
+        <% for(var i=0; i < news.length; i++) { %>
+      <div class="col-sm-3">
+        <div class="card" >
+            <img src="/uploads/<%= news[i].upload %>" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><%= news[i].title %></h5>
+                
+                <a href="/news/<%= news[i].id %>" class="btn btn-primary">스터디참여하기</a>
+               <p> <%= news[i].category_title %> /
+                보증금:<%= news[i].price %>원</p>
+            </div>
+        </div>
+    </div>
+    <% } %>
+</div>
+
+
+
+
+  
+
+  <% } else { %>
+    <div class="card">
+      <div class="card-header">
+        Alert!
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p>개설된 스터디가 없습니다.</p>
+        </blockquote>
+      </div>
+    </div>
+  <% } %>
+
+  
+</div>
+
+
+
+<%- include('includes/footer'); -%>

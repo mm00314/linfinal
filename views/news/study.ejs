@@ -1,0 +1,66 @@
+<%- include('includes/header'); -%>
+<%- include('includes/nav'); -%>
+
+<div class="jumbotron" style="text-align:center; margin: auto;">  <!--사이즈에 유동적으로 조절이 가능-->
+  <h1 class="font-weight-bold">스터디 인증하기</h1>
+  <hr class="my-4">
+  <h5> 인증샷을 올리고 내용을 작성해보세요.</h5>
+</div>
+
+<div class="row">
+    <div class="col">
+        <hr>
+        <form method="post" action="/news/<%= studyid %>/comment" enctype="multipart/form-data">
+          <div class="form-group w-50" style="margin: auto">
+              <h4 style="margin: auto;">스터디 인증</h4>
+          </div>
+            <div class="form-group w-50" style="margin: auto; margin-top: 10px;">
+              <label for="exampleInputEmail1">이름</label>
+              <input type="text" value="<%= locals.user.username %>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" name="author" readonly>
+            </div>
+            <div class="form-group w-50" style="margin: auto; margin-top: 10px;">
+              <label for="exampleFormControlTextarea1">내용</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc"></textarea>
+            </div>
+            <div class="form-group w-50" style="margin: auto; margin-top: 10px; background: #eee; border-radius: 5px; padding: 10px;">
+              <label for="inputUpload">인증 사진</label>
+              <input type="file" name="upload"  id="inputUpload" aria-describedby="inputUpload">
+              <small id="uploadHelp" class="form-text text-muted">스터디를 인증할 사진을 올려주세요 </small>
+            </div>
+            <div class="form-group w-50" style="margin: auto; margin-top: 10px;">
+                <button type="submit" class="btn btn-primary" style="float: right;">작성하기</button>
+            </div>
+        </form>
+    </div>
+</div>
+<hr>
+
+<div class="row" style="padding: 10px;">
+    <div class="col">
+        <% if (comment.length>0) { %>
+          <div class="row">
+              <% for(var i=0; i < comment.length; i++) { %>
+                <div class="col-3">
+                  <div class="card">
+                      <img src="/uploads/<%= comment[i].picture %>" style="width: 90%; margin: 5%;" >
+                      <div class="card-body">
+                          <h5 class="card-title" style="margin-top: -10px;"><%= comment[i].author %>님 작성, </h5>
+                          
+                          
+                          <strong><%= comment[i].desc %> 
+                            <br> <i style="font-size: 14px;"><%= moment(comment[i].inserted).format('YYYY-MM-DD h:mm:ss a') %></i> </strong>
+                          <% if(locals.user.username == comment[i].author) { %>
+                            <a href="/news/delete/<%= studyid %>/<%= comment[i].id %>" class="rectBtnRedSmall" role="button" aria-pressed="true" style="float: right;">삭제</a>
+                            <% } %>
+                      </div>
+                  </div>
+                </div>
+                <% } %>
+          </div>
+          <% } else { %>
+            <p>댓글이 아직 없어요.</p>
+            <% } %>
+    </div>
+  </div>
+
+<%- include('includes/footer'); -%>

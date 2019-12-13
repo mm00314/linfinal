@@ -1,0 +1,76 @@
+<%- include('includes/header'); -%>
+<%- include('includes/nav'); -%>
+
+
+
+<div class="jumbotron" style="text-align:center; margin: auto;">  <!--사이즈에 유동적으로 조절이 가능-->
+  <h1 class="font-weight-bold">스터디를 개설해보세요!</h1>
+  <hr class="my-4">
+  <h5> 자신이 원하는 방식의 스터디를 개설하고 참여해보세요. 총대를 하기 부담스러우세요?</h5>
+     <h5>걱정마세요, 회계관리부터 공부관리까지 총대봇이 모두 해드립니다.</h5>
+  
+
+  
+</div>
+
+
+
+<div class="container" >
+  <form method="post" enctype="multipart/form-data">
+    <input type="hidden" name="username" value="<%= locals.user.username %>">
+    <div class="form-group w-50" style="margin: 10px auto;">
+      <label for="inputTitle">Category</label>
+      <select class="custom-select" name="category">
+        <option>Select category</option>
+        <% for (var i=0; i < category.length; i++) { %>
+          <option value="<%= category[i].id %>"><%= category[i].title %></option>
+        <% } %>
+      </select>
+        </div>
+
+
+
+
+    <div class="md-form form-group w-50" style="margin: 10px auto;">
+        
+      <label for="inputTitle">스터디 이름</label>
+      <input type="text" name="title" class="form-control" id="inputTitle" aria-describedby="inputTitle" placeholder="Enter title">
+      <small id="titleHelp" class="form-text text-muted">스터디 이름을 입력해주세요.</small>
+    </div>
+    
+    <div class="md-form form-group w-50" style="margin: auto;">
+      <label for="inputDesc">스터디 설명</label>
+      <textarea name="desc" rows="8" cols="40" class="form-control" id="inputDesc"></textarea>
+      <small id="descHelp" class="form-text text-muted">스터디 세부 내용을 입력해주세요.</small>
+    </div>
+    <div class="md-form form-group w-50" style="margin: auto;">
+      <label for="inputTitle">보증금</label>
+      <input type="number" name="author" class="form-control" id="inputAuthor" aria-describedby="inputAuthor">
+      <small id="authorHelp" class="form-text text-muted">보증금을 입력해주세요. </small>
+    </div>
+    <div class="md-form form-group w-50" style="margin: auto;">
+      <label for="inputUpload">Photo</label>
+      <input type="file" name="upload"  id="inputUpload" aria-describedby="inputUpload">
+      <small id="uploadHelp" class="form-text text-muted">스터디를 대표할 사진을 올려주세요 </small>
+    </div>
+
+    <div class="md-form form-group w-50" style="margin: auto;">
+        <label for="inputdate">스터디 시작 날짜</label>
+        <input type="date" name="date"  id="inputdate" aria-describedby="inputdate">
+        <small id="dateHelp" class="form-text text-muted">스터디를 시작할 날짜를 선택하세요 </small>
+      </div>
+
+      <div class="md-form form-group w-50" style="margin: auto;">
+          <label for="inputpeople">스터디원 수</label>
+          <input type="number" name="people" class="form-control" id="inputpeople" aria-describedby="inputpeople">
+          <small id="peopletHelp" class="form-text text-muted">원하는 스터디원의 수를 입력하세요 </small>
+        </div>
+
+    <div class="md-form form-group w-50" style="margin: auto;">
+      <button type="submit" class="btn btn-primary" style="float: right; margin-left: 20px;">스터디 만들기</button>
+    <a href="/news" class="btn btn-secondary" style="float: right;">취소</a>
+    </div>
+  </form>
+</div>
+
+<%- include('includes/footer'); -%>

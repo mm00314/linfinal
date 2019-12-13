@@ -1,0 +1,108 @@
+@CHARSET "UTF-8";
+@font-face {
+  font-family: 'AppleSDGothicNeoM';
+  src: url(../font/AppleSDGothicNeoM.ttf) format('truetype');
+}
+html{
+  font-family: AppleSDGothicNeoM !important;
+}
+.default-font { 
+  font-family: AppleSDGothicNeoM !important;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.justify-content-between {
+  margin-top:20px;
+}
+.media {
+  margin: 15px 0;
+}
+
+.card {
+  margin: 15px 0;
+}
+
+.addButton {
+  padding: 10px 20px;
+  background: transparent;
+  border: 0px solid transparent;
+  border-style: none;
+  color: #01937f;
+  font-size: 18px;
+  border-bottom: 1px solid #01937f;
+}
+.addButton:hover {
+  padding: 10px 20px;
+  background: transparent;
+  border: 0px solid transparent;
+  border-style: none;
+  color: #01937f;
+  border-bottom: 1px solid #01937f;
+  text-decoration: none;
+}
+
+.nav_active{
+  background: transparent;
+  border: 0px solid transparent;
+  border-style: none;
+  color: #01937f;
+  border-bottom: 1px solid #01937f;
+  border-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  background-clip: none;
+}
+.nav_active:hover {
+  text-decoration: none;
+  color: #01937f;
+}
+
+.rectBtn{
+  background: transparent;
+  padding: 10px 20px;
+  border: 0px solid transparent;
+  border-style: none;
+  color: #01937f;
+  text-decoration: none;
+  font-size: 24px;
+}
+.rectBtn:hover{
+  background: #01937f;
+  color: white;
+  text-decoration: none;
+}
+
+.rectBtnRed{
+  background: transparent;
+  padding: 10px 20px;
+  border: 0px solid transparent;
+  border-style: none;
+  color: #7f2721;
+  text-decoration: none;
+  font-size: 24px;
+}
+.rectBtnRed:hover{
+  background: #7f2721;
+  color: white;
+  text-decoration: none;
+}
+
+.rectBtnRedSmall{
+  background: transparent;
+  padding: 5px 10px;
+  border: 0px solid transparent;
+  border-style: none;
+  color: #7f2721;
+  text-decoration: none;
+  font-size: 20px;
+}
+.rectBtnRedSmall:hover{
+  background: #7f2721;
+  color: white;
+  text-decoration: none;
+}

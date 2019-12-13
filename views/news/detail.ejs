@@ -1,0 +1,61 @@
+<%- include('includes/header'); -%>
+<%- include('includes/nav'); -%>
+
+
+<div class="card card-image default-font" style="background-image:url( /uploads/<%= news.upload %>); background-repeat:no-repeat; background-size:100%">
+  <div class="text-white text-center rgba-stylish-strong py-5 px-4" style="background: rgba(0, 0, 0, .5);">
+    <div class="py-5">
+
+      <!-- Content -->
+      
+      <h2 class="card-title h2"><%= news.title %></h2>
+      <p class=""><%= news.desc %></p>
+      
+
+    </div>
+  </div>
+</div>
+  
+
+
+<div class="jumbotron default-font" style="text-align:center;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">        
+            <h4 style="font-weight: 600; font-size: 30px;">기간</h4>
+            <h3><span style="font-weight: 100; font-size: 25px; "><%= news.startdate.getMonth()+1 %> / <%= news.startdate.getDate() %></span> 시작</h3>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <h4 style="font-weight: 600; font-size: 30px;">참여 인원</h4>
+              <h3><span style="font-weight: 100; font-size: 25px; "><%= news.people %></span>명/<span style="font-weight: 100; font-size: 25px; "><%= news.maxpeople %></span>명</h3>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <h4 style="font-weight: 600; font-size: 30px;">보증금</h4>
+              <h3><span style="font-weight: 100; font-size: 25px; "><%= news.price %></span>원</h3>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+
+  </div>
+
+  <div class="text-center">
+    <% if(already){ %>
+      <a href="/news/study/<%= news.id %>" class="rectBtn" role="button" aria-pressed="true">스터디 인증하기</a>
+    <% } else if(news.maxpeople >= news.people){ %>
+      <a href="/news/study/<%= news.id %>" onclick="alert('스터디에 참여되었습니다.');" class="rectBtn" role="button" aria-pressed="true">스터디 들어가기</a>
+    <% } else { %>
+      <button onclick="alert('참가 정원에 도달하였습니다.'); " class="rectBtnRed" role="button" aria-pressed="true">스터디 들어가기</button>
+    <% } %>
+</div>
+  
+
+</div>
+<%- include('includes/footer'); -%>

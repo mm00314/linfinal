@@ -1,0 +1,76 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <a class="navbar-brand" href="/"><img src="/static/img/logo.png" width="100" height="60"></a>
+
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      
+      <% if(locals.user && locals.user.isAdmin == 1) { %>
+        <li class="nav-item active">
+          <a class="nav-link" href="/admin">Admin</a>
+        </li>
+      <% } %>
+    </ul>
+
+    
+
+    <% if(locals.user) { %>
+      
+      
+    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+        <li class="d-flex h-100">
+            <a href="/news/add" class="addButton align-self-center" role="button" aria-pressed="true">스터디 개설하기</a>
+        </li>
+      <li class="nav-item dropdown">
+
+        
+    
+        
+      <a class="nav-link dropdown-toggle btn-group" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 10px;">
+        <%= locals.user.username %> 님
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                나의참여스터디
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">기상 스터디</a>
+                <a class="dropdown-item" href="#">프랑스어 100점</a>
+                <a class="dropdown-item" href="#">토익 부수기</a>
+                <a class="dropdown-item" href="#">이지영 인강</a>
+              </div>
+          <a class="dropdown-item" href="#"><%= locals.user.name %></a>
+          <a class="dropdown-item" href="#">설정</a>
+          <a class="dropdown-item" href="#">고객Q&A</a>
+          <a class="dropdown-item" href="#">상품함</a>
+          <a class="dropdown-item" href="#">환급 정보</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/account/logout">로그아웃</a>
+      </div>
+    </li>
+
+    
+      <li class="nav-item">
+        <a class="nav-item nav-link mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link btn btn-outline-bright my-2 my-sm-0" href="/account/logout">Logout</a>
+      </li>
+
+    </ul>
+
+    <% } else { %>
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <a class="nav-link btn btn-info my-2 my-sm-0" href="/account/login">Login</a>
+      <a class="nav-link btn btn-outline-bright my-2 my-sm-0" href="/account/signup">Sign up</a>
+    </div>
+    <% } %>
+  </div>
+</nav>
+
+
